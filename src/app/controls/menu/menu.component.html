@@ -1,0 +1,22 @@
+<mat-toolbar>
+  <div>
+    <span>Formation</span>
+    <a mat-button [routerLink]="['dashboard']" routerLinkActive="active">
+      Accueil
+      <mat-icon class="mat-18">home</mat-icon>
+    </a>
+
+    <!--<a mat-button [routerLink]="['rooms', { outlets:{bob: ['list']}}]">
+      Salles
+      <mat-icon class="mat-18">list</mat-icon>
+    </a>-->
+    <a mat-button [routerLink]="['rooms/list']" routerLinkActive="active">
+      Salles
+      <mat-icon class="mat-18">list</mat-icon>
+    </a>
+    <a mat-button [routerLink]="['rooms/create']" routerLinkActive="active">
+      Ajouter une salle
+      <mat-icon class="mat-18">edit</mat-icon>
+    </a>
+  </div>
+</mat-toolbar>
