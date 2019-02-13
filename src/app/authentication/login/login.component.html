@@ -1,0 +1,16 @@
+<div class="form-container">
+  <form [formGroup]="formLogin" (ngSubmit)="formSubmit(formLogin.value)" novalidate>
+
+    <mat-form-field>
+      <input matInput formControlName="login" type="text" placeholder="Mail">
+    </mat-form-field>
+    <mat-error *ngIf="!formLogin.get('login').valid && formLogin.get('login').touched">Login incorrect</mat-error>
+    <mat-form-field>
+      <input matInput formControlName="password" type="password" placeholder="Mot de passe">
+    </mat-form-field>
+    <mat-error *ngIf="!formLogin.get('password').valid && formLogin.get('password').touched">Mot de passe incorrect
+    </mat-error>
+    <button mat-button [disabled]="!formLogin.valid">Se connecter</button>
+
+  </form>
+</div>

@@ -1,4 +1,4 @@
-<mat-toolbar>
+<mat-toolbar class="flex-container">
   <div>
     <span>Formation</span>
     <a mat-button [routerLink]="['dashboard']" routerLinkActive="active">
@@ -18,5 +18,37 @@
       Ajouter une salle
       <mat-icon class="mat-18">edit</mat-icon>
     </a>
+  </div>
+  <div>
+    <ng-container *ngIf="(store$ | async)?.name == ''; else log">
+      <a routerLink="authentication/login" mat-button>
+        <mat-icon class="mat-18">locked_out</mat-icon>
+        Login
+      </a>
+    </ng-container>
+    <ng-template #log>
+
+      <button mat-button [matMenuTriggerFor]="menuRef">
+        <span>Bonjour {{(store$ | async)?.name}}</span>
+        <mat-icon class="mat-18">more_vert</mat-icon>
+      </button>
+
+      <mat-menu #menuRef="matMenu" x-position="after" y-position="below" [overlapTrigger]="false">
+        <a mat-menu-item>
+          <mat-icon class="mat-18">person</mat-icon>
+          Profile
+        </a>
+        <button mat-menu-item (click)="logout()">
+          <mat-icon class="mat-18">locked_in</mat-icon>
+          Logout
+        </button>
+      </mat-menu>
+    </ng-template>
+
+    <span *ngFor="let bc of breadcrumbs">
+      {{bc}}
+    </span>
+
+
   </div>
 </mat-toolbar>
